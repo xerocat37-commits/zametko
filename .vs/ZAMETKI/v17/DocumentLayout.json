@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|c:\\users\\konon\\documents\\github\\zametko\\zametki\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|solutionrelative:zametki\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|c:\\users\\konon\\documents\\github\\zametko\\zametki\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|solutionrelative:zametki\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|c:\\users\\konon\\documents\\github\\zametko\\zametki\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|solutionrelative:zametki\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|c:\\users\\konon\\documents\\github\\zametko\\zametki\\globalxmlns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|solutionrelative:zametki\\globalxmlns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|c:\\users\\konon\\documents\\github\\zametko\\zametki\\resources\\models\\notes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|solutionrelative:zametki\\resources\\models\\notes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|c:\\users\\konon\\documents\\github\\zametko\\zametki\\resources\\services\\filenotesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|solutionrelative:zametki\\resources\\services\\filenotesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|c:\\users\\konon\\documents\\github\\zametko\\zametki\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{940BEA4C-D68E-4535-84EB-FF32D8144A96}|ZAMETKI\\ZAMETKI.csproj|solutionrelative:zametki\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\AppShell.xaml",
+              "RelativeDocumentMoniker": "ZAMETKI\\AppShell.xaml",
+              "ToolTip": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\AppShell.xaml",
+              "RelativeToolTip": "ZAMETKI\\AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-23T19:59:24.03Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GlobalXmlns.cs",
+              "DocumentMoniker": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\GlobalXmlns.cs",
+              "RelativeDocumentMoniker": "ZAMETKI\\GlobalXmlns.cs",
+              "ToolTip": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\GlobalXmlns.cs",
+              "RelativeToolTip": "ZAMETKI\\GlobalXmlns.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T23:53:51.951Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FileNotesService.cs",
+              "DocumentMoniker": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\Resources\\Services\\FileNotesService.cs",
+              "RelativeDocumentMoniker": "ZAMETKI\\Resources\\Services\\FileNotesService.cs",
+              "ToolTip": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\Resources\\Services\\FileNotesService.cs",
+              "RelativeToolTip": "ZAMETKI\\Resources\\Services\\FileNotesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T20:08:31.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Notes.cs",
+              "DocumentMoniker": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\Resources\\Models\\Notes.cs",
+              "RelativeDocumentMoniker": "ZAMETKI\\Resources\\Models\\Notes.cs",
+              "ToolTip": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\Resources\\Models\\Notes.cs",
+              "RelativeToolTip": "ZAMETKI\\Resources\\Models\\Notes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T20:08:20.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\MainPage.xaml",
+              "RelativeDocumentMoniker": "ZAMETKI\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\MainPage.xaml",
+              "RelativeToolTip": "ZAMETKI\\MainPage.xaml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAIAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-28T20:06:37.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\App.xaml",
+              "RelativeDocumentMoniker": "ZAMETKI\\App.xaml",
+              "ToolTip": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\App.xaml",
+              "RelativeToolTip": "ZAMETKI\\App.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-23T19:58:55.24Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "ZAMETKI\\MainPage.xaml.cs",
+              "ToolTip": "C:\\Users\\konon\\Documents\\GitHub\\zametko\\ZAMETKI\\MainPage.xaml.cs",
+              "RelativeToolTip": "ZAMETKI\\MainPage.xaml.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAASwAwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T20:07:34.745Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
