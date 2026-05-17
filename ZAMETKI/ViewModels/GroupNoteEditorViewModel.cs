@@ -9,11 +9,17 @@ public partial class GroupNoteEditorViewModel : ObservableObject
 {
     private readonly GroupNotesApi _notes;
 
-    public GroupNoteEditorViewModel(GroupNotesApi notes) => _notes = notes;
+    public NoteEditorViewModel Editor { get; }
+
+    public GroupNoteEditorViewModel(GroupNotesApi notes, NoteEditorViewModel editor)
+    {
+        _notes = notes;
+        Editor = editor;
+        Editor.Load(null);
+    }
 
     [ObservableProperty] private string? groupId;
     [ObservableProperty] private string title = string.Empty;
-    [ObservableProperty] private string content = string.Empty;
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]
     private bool isBusy;
@@ -35,7 +41,8 @@ public partial class GroupNoteEditorViewModel : ObservableObject
         ErrorMessage = null;
         try
         {
-            await _notes.CreateAsync(GroupId, Title.Trim(), Content ?? string.Empty);
+            var content = Editor.Serialize();
+            await _notes.CreateAsync(GroupId, Title.Trim(), content);
             await Shell.Current.GoToAsync("..");
         }
         catch (ApiException ex)

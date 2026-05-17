@@ -18,6 +18,7 @@ namespace ZAMETKI
             Routing.RegisterRoute("registerTeacher", typeof(RegisterTeacherPage));
             Routing.RegisterRoute("groupDetails", typeof(GroupDetailsPage));
             Routing.RegisterRoute("groupNoteEditor", typeof(GroupNoteEditorPage));
+            Routing.RegisterRoute("personalNoteEditor", typeof(PersonalNoteEditorPage));
 
             _auth.AuthStateChanged += (_, _) => ApplyRoleVisibility();
             ApplyRoleVisibility();

@@ -41,6 +41,8 @@ namespace ZAMETKI
             builder.Services.AddTransient<GroupDetailsViewModel>();
             builder.Services.AddTransient<GroupNoteEditorViewModel>();
             builder.Services.AddTransient<HeadBroadcastViewModel>();
+            builder.Services.AddTransient<NoteEditorViewModel>();
+            builder.Services.AddTransient<PersonalNoteEditorViewModel>();
 
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<RoleSelectionPage>();
@@ -52,6 +54,7 @@ namespace ZAMETKI
             builder.Services.AddTransient<HeadBroadcastPage>();
             builder.Services.AddTransient<GroupDetailsPage>();
             builder.Services.AddTransient<GroupNoteEditorPage>();
+            builder.Services.AddTransient<PersonalNoteEditorPage>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ZAMETKI.ViewModels"
+             xmlns:models="clr-namespace:ZAMETKI.Editor.Models"
+             xmlns:selectors="clr-namespace:ZAMETKI.Editor.Selectors"
+             xmlns:behaviors="clr-namespace:ZAMETKI.Editor.Behaviors"
+             xmlns:converters="clr-namespace:ZAMETKI.Editor.Converters"
+             x:Class="ZAMETKI.Editor.Views.NoteEditorView"
+             x:Name="EditorRoot"
+             x:DataType="vm:NoteEditorViewModel">
+
+    <ContentView.Resources>
+        <converters:HeadingFontSizeConverter x:Key="HeadingFontSize" />
+        <converters:ByteSizeConverter x:Key="ByteSize" />
+
+        <DataTemplate x:Key="ParagraphTemplate" x:DataType="models:ParagraphBlock">
+            <Grid ColumnDefinitions="Auto,*,Auto"
+                  Padding="0,2"
+                  ColumnSpacing="6">
+
+                <Button Grid.Column="0"
+                        Text="✕"
+                        FontSize="12"
+                        WidthRequest="24"
+                        HeightRequest="24"
+                        Padding="0"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource Gray400}"
+                        IsVisible="{Binding BindingContext.IsEditable, Source={x:Reference EditorRoot}}"
+                        Command="{Binding BindingContext.RemoveBlockCommand, Source={x:Reference EditorRoot}}"
+                        CommandParameter="{Binding .}" />
+
+                <Editor Grid.Column="1"
+                        Text="{Binding Text, Mode=TwoWay}"
+                        Placeholder="Введите текст или «/» для меню"
+                        AutoSize="TextChanges"
+                        IsReadOnly="{Binding BindingContext.IsReadOnly, Source={x:Reference EditorRoot}}"
+                        FontSize="16">
+                    <Editor.Behaviors>
+                        <behaviors:EnterAddsBlockBehavior
+                            Command="{Binding BindingContext.EnterPressedCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                        <behaviors:SlashOpensMenuBehavior
+                            Command="{Binding BindingContext.SlashTypedCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                        <behaviors:FocusOnRequestBehavior />
+                    </Editor.Behaviors>
+                </Editor>
+
+                <VerticalStackLayout Grid.Column="2"
+                                     Spacing="0"
+                                     IsVisible="{Binding BindingContext.IsEditable, Source={x:Reference EditorRoot}}">
+                    <Button Text="▲" FontSize="10" WidthRequest="22" HeightRequest="22" Padding="0"
+                            BackgroundColor="Transparent" TextColor="{StaticResource Gray400}"
+                            Command="{Binding BindingContext.MoveUpCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                    <Button Text="▼" FontSize="10" WidthRequest="22" HeightRequest="22" Padding="0"
+                            BackgroundColor="Transparent" TextColor="{StaticResource Gray400}"
+                            Command="{Binding BindingContext.MoveDownCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                </VerticalStackLayout>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HeadingTemplate" x:DataType="models:HeadingBlock">
+            <Grid ColumnDefinitions="Auto,*,Auto"
+                  ColumnSpacing="6"
+                  Padding="0,8,0,2">
+
+                <Button Grid.Column="0"
+                        Text="H"
+                        FontAttributes="Bold"
+                        WidthRequest="28" HeightRequest="28" Padding="0"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource Primary}"
+                        IsVisible="{Binding BindingContext.IsEditable, Source={x:Reference EditorRoot}}"
+                        Command="{Binding BindingContext.CycleHeadingLevelCommand, Source={x:Reference EditorRoot}}"
+                        CommandParameter="{Binding .}" />
+
+                <Editor Grid.Column="1"
+                        Text="{Binding Text, Mode=TwoWay}"
+                        Placeholder="Заголовок"
+                        AutoSize="TextChanges"
+                        IsReadOnly="{Binding BindingContext.IsReadOnly, Source={x:Reference EditorRoot}}"
+                        FontAttributes="Bold"
+                        FontSize="{Binding Level, Converter={StaticResource HeadingFontSize}}">
+                    <Editor.Behaviors>
+                        <behaviors:EnterAddsBlockBehavior
+                            Command="{Binding BindingContext.EnterPressedCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                        <behaviors:FocusOnRequestBehavior />
+                    </Editor.Behaviors>
+                </Editor>
+
+                <VerticalStackLayout Grid.Column="2"
+                                     Spacing="0"
+                                     IsVisible="{Binding BindingContext.IsEditable, Source={x:Reference EditorRoot}}">
+                    <Button Text="▲" FontSize="10" WidthRequest="22" HeightRequest="22" Padding="0"
+                            BackgroundColor="Transparent" TextColor="{StaticResource Gray400}"
+                            Command="{Binding BindingContext.MoveUpCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                    <Button Text="▼" FontSize="10" WidthRequest="22" HeightRequest="22" Padding="0"
+                            BackgroundColor="Transparent" TextColor="{StaticResource Gray400}"
+                            Command="{Binding BindingContext.MoveDownCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                </VerticalStackLayout>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FileTemplate" x:DataType="models:FileBlock">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="6" Padding="0,4">
+                <Border Grid.Column="0"
+                        Padding="12"
+                        StrokeThickness="1"
+                        Stroke="{StaticResource Gray200}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10" />
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" Text="📎" FontSize="22" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                            <Label Text="{Binding FileName}" FontAttributes="Bold" FontSize="14"
+                                   LineBreakMode="MiddleTruncation" />
+                            <Label Text="{Binding SizeBytes, Converter={StaticResource ByteSize}}"
+                                   FontSize="12" TextColor="{StaticResource Gray500}" />
+                        </VerticalStackLayout>
+                        <Button Grid.Column="2" Text="Открыть"
+                                Command="{Binding BindingContext.OpenFileCommand, Source={x:Reference EditorRoot}}"
+                                CommandParameter="{Binding .}" />
+                    </Grid>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding BindingContext.OpenFileCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                    </Border.GestureRecognizers>
+                </Border>
+
+                <VerticalStackLayout Grid.Column="1"
+                                     Spacing="0"
+                                     VerticalOptions="Center"
+                                     IsVisible="{Binding BindingContext.IsEditable, Source={x:Reference EditorRoot}}">
+                    <Button Text="▲" FontSize="10" WidthRequest="22" HeightRequest="22" Padding="0"
+                            BackgroundColor="Transparent" TextColor="{StaticResource Gray400}"
+                            Command="{Binding BindingContext.MoveUpCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                    <Button Text="▼" FontSize="10" WidthRequest="22" HeightRequest="22" Padding="0"
+                            BackgroundColor="Transparent" TextColor="{StaticResource Gray400}"
+                            Command="{Binding BindingContext.MoveDownCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                    <Button Text="✕" FontSize="12" WidthRequest="22" HeightRequest="22" Padding="0"
+                            BackgroundColor="Transparent" TextColor="{StaticResource Gray400}"
+                            Command="{Binding BindingContext.RemoveBlockCommand, Source={x:Reference EditorRoot}}"
+                            CommandParameter="{Binding .}" />
+                </VerticalStackLayout>
+            </Grid>
+        </DataTemplate>
+
+        <selectors:BlockTemplateSelector x:Key="BlockSelector"
+                                         ParagraphTemplate="{StaticResource ParagraphTemplate}"
+                                         HeadingTemplate="{StaticResource HeadingTemplate}"
+                                         FileTemplate="{StaticResource FileTemplate}" />
+    </ContentView.Resources>
+
+    <Grid RowDefinitions="*,Auto">
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                Padding="8"
+                Spacing="2"
+                BindableLayout.ItemsSource="{Binding Blocks}"
+                BindableLayout.ItemTemplateSelector="{StaticResource BlockSelector}" />
+        </ScrollView>
+
+        <Grid Grid.Row="1" Padding="8" ColumnSpacing="8"
+              ColumnDefinitions="Auto,Auto,Auto,*"
+              IsVisible="{Binding IsEditable}">
+            <Button Grid.Column="0" Text="+ Текст" Command="{Binding AddParagraphCommand}" />
+            <Button Grid.Column="1" Text="+ Заголовок" Command="{Binding AddHeadingCommand}" />
+            <Button Grid.Column="2" Text="+ Файл" Command="{Binding AddFileCommand}" />
+        </Grid>
+    </Grid>
+</ContentView>

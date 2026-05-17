@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:ZAMETKI.ViewModels"
              xmlns:editor="clr-namespace:ZAMETKI.Editor.Views"
-             x:Class="ZAMETKI.Pages.GroupNoteEditorPage"
-             x:DataType="vm:GroupNoteEditorViewModel"
-             Title="Новая заметка группы">
+             x:Class="ZAMETKI.Pages.PersonalNoteEditorPage"
+             x:DataType="vm:PersonalNoteEditorViewModel"
+             Title="Заметка">
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="16" RowSpacing="8">
 

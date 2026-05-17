@@ -24,7 +24,7 @@ public partial class MyGroupsPage : ContentPage
 
     private async void AddGroupButton_Clicked(object sender, EventArgs e)
     {
-        var name = await DisplayPromptAsync("Новая группа", "Название группы (специальность):", placeholder: "Например, ИВТ-21", maxLength: 100);
+        var name = await DisplayPromptAsync("Новая группа", "Название группы (специальность):", placeholder: "Например, ГРУППА-22", maxLength: 100);
         if (string.IsNullOrWhiteSpace(name)) return;
         await _vm.CreateAsync(name.Trim());
     }

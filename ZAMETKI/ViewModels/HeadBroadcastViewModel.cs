@@ -12,16 +12,19 @@ public partial class HeadBroadcastViewModel : ObservableObject
     private readonly GlobalNotesApi _global;
     private readonly NotesApi _notes;
 
-    public HeadBroadcastViewModel(GlobalNotesApi global, NotesApi notes)
+    public NoteEditorViewModel Editor { get; }
+
+    public HeadBroadcastViewModel(GlobalNotesApi global, NotesApi notes, NoteEditorViewModel editor)
     {
         _global = global;
         _notes = notes;
+        Editor = editor;
+        Editor.Load(null);
     }
 
     public ObservableCollection<NoteDto> Broadcasts { get; } = new();
 
     [ObservableProperty] private string newTitle = string.Empty;
-    [ObservableProperty] private string newContent = string.Empty;
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsNotBusy))]
     private bool isBusy;
@@ -68,10 +71,11 @@ public partial class HeadBroadcastViewModel : ObservableObject
         ErrorMessage = null;
         try
         {
-            var note = await _global.CreateAsync(NewTitle.Trim(), NewContent ?? string.Empty);
+            var content = Editor.Serialize();
+            var note = await _global.CreateAsync(NewTitle.Trim(), content);
             Broadcasts.Insert(0, note);
             NewTitle = string.Empty;
-            NewContent = string.Empty;
+            Editor.Load(null);
         }
         catch (ApiException ex)
         {
