@@ -3,12 +3,49 @@
     x:Class="ZAMETKI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ZAMETKI"
-    Title="ZAMETKI">
+    xmlns:pages="clr-namespace:ZAMETKI.Pages"
+    Title="ZAMETKI"
+    FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Вход"
+        Route="login"
+        ContentTemplate="{DataTemplate pages:LoginPage}" />
+
+    <FlyoutItem Title="Главная" Route="main" FlyoutDisplayOptions="AsMultipleItems">
+
+        <ShellContent
+            Title="Личные"
+            Icon="dotnet_bot.png"
+            Route="personal"
+            ContentTemplate="{DataTemplate pages:PersonalNotesPage}" />
+
+        <ShellContent
+            Title="Лента"
+            Icon="dotnet_bot.png"
+            Route="feed"
+            ContentTemplate="{DataTemplate pages:FeedPage}" />
+
+        <ShellContent
+            x:Name="MyGroupsShellItem"
+            Title="Мои группы"
+            Icon="dotnet_bot.png"
+            Route="myGroups"
+            ContentTemplate="{DataTemplate pages:MyGroupsPage}" />
+
+        <ShellContent
+            x:Name="HeadBroadcastShellItem"
+            Title="Рассылка"
+            Icon="dotnet_bot.png"
+            Route="broadcast"
+            ContentTemplate="{DataTemplate pages:HeadBroadcastPage}" />
+
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <Grid Padding="16">
+            <Button Text="Выйти" Clicked="LogoutButton_Clicked" />
+        </Grid>
+    </Shell.FlyoutFooter>
 
 </Shell>

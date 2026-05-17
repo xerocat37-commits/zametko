@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:contracts="clr-namespace:ZAMETKI.Api.Contracts"
+             xmlns:vm="clr-namespace:ZAMETKI.ViewModels"
+             x:Class="ZAMETKI.Pages.HeadBroadcastPage"
+             x:DataType="vm:HeadBroadcastViewModel"
+             Title="Рассылка">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <Label Text="Новая рассылка" FontSize="18" FontAttributes="Bold" />
+            <Entry Placeholder="Заголовок" Text="{Binding NewTitle}" />
+            <Editor Placeholder="Текст..." Text="{Binding NewContent}" AutoSize="TextChanges" HeightRequest="120" />
+            <Label Text="{Binding ErrorMessage}" TextColor="Red" />
+            <Button Text="Разослать всем" Command="{Binding CreateCommand}" IsEnabled="{Binding IsNotBusy}" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+
+            <Label Text="История рассылок" FontSize="18" FontAttributes="Bold" Margin="0,16,0,0" />
+            <CollectionView ItemsSource="{Binding Broadcasts}" SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <Label Text="Рассылок ещё не было" TextColor="Gray" HorizontalOptions="Center" Padding="0,12,0,0" />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="contracts:NoteDto">
+                        <Border Margin="0,4" Padding="12" BackgroundColor="#F5F5F5" Stroke="#E0E0E0" StrokeThickness="1">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Grid RowDefinitions="Auto,Auto,Auto">
+                                <Label Grid.Row="0" Text="{Binding Title}" FontSize="16" FontAttributes="Bold" />
+                                <Label Grid.Row="1" Text="{Binding Content}" FontSize="13" TextColor="#444" Margin="0,4,0,0" />
+                                <Label Grid.Row="2" Text="{Binding CreatedDate, StringFormat='{0:dd.MM.yyyy HH:mm}'}" FontSize="11" TextColor="Gray" Margin="0,4,0,0" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

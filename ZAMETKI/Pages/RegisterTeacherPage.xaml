@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ZAMETKI.ViewModels"
+             x:Class="ZAMETKI.Pages.RegisterTeacherPage"
+             x:DataType="vm:RegisterTeacherViewModel"
+             Title="Преподаватель">
+    <ScrollView>
+        <VerticalStackLayout Padding="32" Spacing="16" VerticalOptions="Center" MaximumWidthRequest="420">
+
+            <Label Text="Регистрация: Преподаватель" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <Entry Placeholder="ФИО" Text="{Binding FullName}" />
+            <Entry Placeholder="Пароль" Text="{Binding Password}" IsPassword="True" />
+
+            <Label Text="{Binding ErrorMessage}" TextColor="Red" />
+
+            <Button Text="Зарегистрироваться" Command="{Binding RegisterCommand}" IsEnabled="{Binding IsNotBusy}" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

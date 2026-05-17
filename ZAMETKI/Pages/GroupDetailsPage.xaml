@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:contracts="clr-namespace:ZAMETKI.Api.Contracts"
+             xmlns:vm="clr-namespace:ZAMETKI.ViewModels"
+             x:Class="ZAMETKI.Pages.GroupDetailsPage"
+             x:DataType="vm:GroupDetailsViewModel"
+             Title="{Binding GroupName}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="12" Spacing="16">
+
+            <Label Text="{Binding GroupName}" FontSize="22" FontAttributes="Bold" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+
+            <!-- Студенты -->
+            <Label Text="Студенты" FontSize="18" FontAttributes="Bold" />
+            <Button Text="+ Пригласить студента" Clicked="InviteButton_Clicked" />
+            <CollectionView ItemsSource="{Binding Members}" SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <Label Text="Пока никто не приглашён" TextColor="Gray" HorizontalOptions="Center" Padding="0,12,0,0" />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="contracts:GroupMemberDto">
+                        <Border Margin="0,4" Padding="12" Stroke="#E0E0E0" StrokeThickness="1">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="{Binding StudentFullName}" FontSize="15" />
+                                <Label Grid.Column="1" Text="{Binding Status}" FontSize="12" TextColor="#007AFF" VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Заметки группы -->
+            <Label Text="Групповые заметки" FontSize="18" FontAttributes="Bold" Margin="0,16,0,0" />
+            <Button Text="+ Новая заметка" Clicked="NewNoteButton_Clicked" />
+            <CollectionView ItemsSource="{Binding Notes}" SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <Label Text="Заметок ещё нет" TextColor="Gray" HorizontalOptions="Center" Padding="0,12,0,0" />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="contracts:NoteDto">
+                        <Border Margin="0,4" Padding="12" BackgroundColor="#F5F5F5" Stroke="#E0E0E0" StrokeThickness="1">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <Grid RowDefinitions="Auto,Auto,Auto">
+                                <Label Grid.Row="0" Text="{Binding Title}" FontSize="16" FontAttributes="Bold" />
+                                <Label Grid.Row="1" Text="{Binding Content}" FontSize="13" TextColor="#444" Margin="0,4,0,0" />
+                                <Label Grid.Row="2" Text="{Binding CreatedDate, StringFormat='{0:dd.MM.yyyy HH:mm}'}" FontSize="11" TextColor="Gray" Margin="0,4,0,0" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

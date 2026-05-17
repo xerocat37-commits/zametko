@@ -1,0 +1,28 @@
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userprefs
+
+# Editors
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / local config
+*.env
+appsettings.Development.json
+appsettings.Local.json
+
+# Local SQLite DB files (server)
+ZAMETKI.Api/zametki.db
+ZAMETKI.Api/zametki.db-*

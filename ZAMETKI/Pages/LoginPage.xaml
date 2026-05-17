@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ZAMETKI.ViewModels"
+             x:Class="ZAMETKI.Pages.LoginPage"
+             x:DataType="vm:LoginViewModel"
+             Shell.NavBarIsVisible="False"
+             Title="Вход">
+    <ScrollView>
+        <VerticalStackLayout Padding="32" Spacing="16" VerticalOptions="Center" MaximumWidthRequest="420">
+
+            <Label Text="ZAMETKI" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label Text="Вход в систему" FontSize="16" HorizontalOptions="Center" Margin="0,0,0,16" />
+
+            <Entry Placeholder="ФИО" Text="{Binding FullName}" />
+            <Entry Placeholder="Пароль" Text="{Binding Password}" IsPassword="True" />
+
+            <Label Text="{Binding ErrorMessage}" TextColor="Red" />
+
+            <Button Text="Войти" Command="{Binding LoginCommand}" IsEnabled="{Binding IsNotBusy}" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+
+            <Button Text="Регистрация" Command="{Binding GoToRegisterCommand}"
+                    BackgroundColor="Transparent"
+                    TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

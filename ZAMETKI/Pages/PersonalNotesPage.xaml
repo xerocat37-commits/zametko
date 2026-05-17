@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:contracts="clr-namespace:ZAMETKI.Api.Contracts"
+             xmlns:vm="clr-namespace:ZAMETKI.ViewModels"
+             x:Class="ZAMETKI.Pages.PersonalNotesPage"
+             x:DataType="vm:PersonalNotesViewModel"
+             Title="Личные заметки">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="10">
+
+        <SearchBar Grid.Row="0"
+                   Placeholder="Поиск заметок..."
+                   Text="{Binding SearchText}"
+                   Margin="0,0,0,10" />
+
+        <CollectionView Grid.Row="1"
+                        x:Name="NotesCollectionView"
+                        ItemsSource="{Binding Notes}"
+                        SelectionMode="Single"
+                        SelectionChanged="NotesCollectionView_SelectionChanged">
+            <CollectionView.EmptyView>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+                    <Label Text="📝" FontSize="48" HorizontalOptions="Center" />
+                    <Label Text="Нет заметок" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,10,0,5" />
+                    <Label Text="Нажмите '+' чтобы создать первую заметку" FontSize="14" TextColor="Gray" HorizontalOptions="Center" />
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="contracts:NoteDto">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Удалить" BackgroundColor="Red" Invoked="DeleteSwipeItem_Invoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Border Margin="5" Padding="15" BackgroundColor="#F5F5F5" Stroke="#E0E0E0" StrokeThickness="1">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+
+                            <Grid RowDefinitions="Auto,Auto,Auto">
+                                <Label Grid.Row="0" Text="{Binding Title}" FontSize="18" FontAttributes="Bold" TextColor="#333" MaxLines="1" LineBreakMode="TailTruncation" />
+                                <Label Grid.Row="1" Text="{Binding Content}" FontSize="14" TextColor="#666" MaxLines="2" LineBreakMode="TailTruncation" Margin="0,5,0,0" />
+                                <Label Grid.Row="2" Text="{Binding ModifiedDate, StringFormat='{0:dd.MM.yyyy HH:mm}'}" FontSize="12" TextColor="Gray" Margin="0,5,0,0" />
+                            </Grid>
+                        </Border>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Grid.Row="2"
+                Text="+ Добавить заметку"
+                FontSize="18"
+                FontAttributes="Bold"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="10"
+                HeightRequest="50"
+                Margin="0,10,0,0"
+                Clicked="AddNoteButton_Clicked" />
+
+        <ActivityIndicator Grid.Row="1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Start" Margin="0,8,0,0" />
+    </Grid>
+</ContentPage>
