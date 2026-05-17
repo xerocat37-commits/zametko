@@ -2,7 +2,7 @@ using ZAMETKI.ViewModels;
 
 namespace ZAMETKI.Pages;
 
-[QueryProperty(nameof(Id), "id")]
+[QueryProperty(nameof(GroupId), "id")]
 public partial class GroupDetailsPage : ContentPage
 {
     private readonly GroupDetailsViewModel _vm;
@@ -14,13 +14,13 @@ public partial class GroupDetailsPage : ContentPage
         BindingContext = vm;
     }
 
-    public string? Id { get; set; }
+    public string? GroupId { get; set; }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        if (!string.IsNullOrEmpty(Id) && _vm.GroupId != Id)
-            await _vm.LoadAsync(Id);
+        if (!string.IsNullOrEmpty(GroupId) && _vm.GroupId != GroupId)
+            await _vm.LoadAsync(GroupId);
     }
 
     private async void InviteButton_Clicked(object sender, EventArgs e)
