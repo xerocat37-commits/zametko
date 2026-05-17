@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(dotnet ef *)",
-      "Bash(dotnet sln *)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5000/api/auth/me)"
-    ]
-  }
-}

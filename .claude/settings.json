@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(sqlite3 ZAMETKI.Api/zametki.db \".tables\")",
-      "Bash(python -c \"import sqlite3; c=sqlite3.connect\\('ZAMETKI.Api/zametki.db'\\); print\\([r[0] for r in c.execute\\(\\\\\"SELECT name FROM sqlite_master WHERE type='table' ORDER BY name\\\\\"\\)]\\)\")"
-    ]
-  }
-}
